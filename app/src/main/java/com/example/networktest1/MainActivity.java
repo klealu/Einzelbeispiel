@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText txt2;
     TextView output1;
-
+    TextView output2;
     String out;
 
     @Override
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         txt2 = findViewById(R.id.editText);
         output1 = findViewById(R.id.first);
+        output2 = findViewById(R.id.second);
 
         Button send = findViewById(R.id.button);
         send.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +45,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button calculate = findViewById(R.id.button2);
+        calculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String txt = txt2.getText().toString();
+                int txtToInt = Integer.valueOf(txt);
+                        output2.setText(alternatingSum(txtToInt));
+            }
+        });
 
     }
 
@@ -88,5 +98,30 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public static String alternatingSum(int n) {
 
-}
+        char[] charArray;
+        charArray = String.valueOf(n).toCharArray();
+
+        int sum = 0;
+        for (int i = 0; i < charArray.length; i++) {
+            if (i % 2 == 0) {
+                sum += charArray[i];
+            } else {
+                sum -= charArray[i];
+            }
+        }
+
+        String odd_OR_even = "";
+        if (sum % 2 == 0) {
+            odd_OR_even = "gerade";
+        } else {
+            odd_OR_even = "ungerade";
+        }
+
+        return  odd_OR_even;
+    }
+
+    }
+
+
