@@ -64,9 +64,9 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
                     Socket s = new Socket("se2-isys.aau.at", 53212);
-                    PrintWriter pw = new PrintWriter(s.getOutputStream(), true);
+                    PrintWriter pw = new PrintWriter(s.getOutputStream());
                     pw.println(txt2.getText().toString());
-                    //pw.flush();
+                    pw.flush();
                     BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
                     out = in.readLine();
 
